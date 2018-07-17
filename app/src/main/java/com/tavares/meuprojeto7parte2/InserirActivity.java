@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.tavares.meuprojeto7parte2.data.PetContract;
+import com.tavares.meuprojeto7parte2.data.LivroContract;
 
 public class InserirActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -35,7 +35,7 @@ public class InserirActivity extends AppCompatActivity  implements LoaderManager
     // private EditText mBreedEditText;
 
 
-    //private int mGender = PetContract.PetEntry.GENDER_UNKNOWN;
+    //private int mGender = LivroContract.PetEntry.GENDER_UNKNOWN;
 
     private boolean mPetHasChanged = false;
 
@@ -103,18 +103,18 @@ public class InserirActivity extends AppCompatActivity  implements LoaderManager
                 String selection = (String) parent.getItemAtPosition(position);
                 if (!TextUtils.isEmpty(selection)) {
                     if (selection.equals(getString(R.string.gender_male))) {
-                        mGender = PetContract.PetEntry.GENDER_MALE;
+                        mGender = LivroContract.PetEntry.GENDER_MALE;
                     } else if (selection.equals(getString(R.string.gender_female))) {
-                        mGender = PetContract.PetEntry.GENDER_FEMALE;
+                        mGender = LivroContract.PetEntry.GENDER_FEMALE;
                     } else {
-                        mGender = PetContract.PetEntry.GENDER_UNKNOWN;
+                        mGender = LivroContract.PetEntry.GENDER_UNKNOWN;
                     }
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                mGender = PetContract.PetEntry.GENDER_UNKNOWN;
+                mGender = LivroContract.PetEntry.GENDER_UNKNOWN;
             }
         });
          */
@@ -139,22 +139,22 @@ public class InserirActivity extends AppCompatActivity  implements LoaderManager
 
         if (mCurrentPetUri == null &&
                 TextUtils.isEmpty(nameString) && TextUtils.isEmpty(breedString) &&
-                TextUtils.isEmpty(weightString) && mGender == PetContract.PetEntry.GENDER_UNKNOWN) {
+                TextUtils.isEmpty(weightString) && mGender == LivroContract.PetEntry.GENDER_UNKNOWN) {
             return;
         }
         */
         ContentValues values = new ContentValues();
-        values.put(PetContract.PetEntry.COLUNA_TITULO, tituloString);
-        values.put(PetContract.PetEntry.COLUNA_AUTOR, autorString);
-        values.put(PetContract.PetEntry.COLUNA_PRECO, precoString);
-        values.put(PetContract.PetEntry.COLUNA_QUANTIDADE, quantidadeString);
-        values.put(PetContract.PetEntry.COLUNA_NOME_FORNECEDOR, nomeFornecedor);
-        values.put(PetContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR, telefoneString);
+        values.put(LivroContract.PetEntry.COLUNA_TITULO, tituloString);
+        values.put(LivroContract.PetEntry.COLUNA_AUTOR, autorString);
+        values.put(LivroContract.PetEntry.COLUNA_PRECO, precoString);
+        values.put(LivroContract.PetEntry.COLUNA_QUANTIDADE, quantidadeString);
+        values.put(LivroContract.PetEntry.COLUNA_NOME_FORNECEDOR, nomeFornecedor);
+        values.put(LivroContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR, telefoneString);
 
-        //values.put(PetContract.PetEntry.COLUMN_PET_WEIGHT, weight);
+        //values.put(LivroContract.PetEntry.COLUMN_PET_WEIGHT, weight);
 
         if (mCurrentPetUri == null) {
-            Uri uri = getContentResolver().insert(PetContract.PetEntry.CONTENT_URI, values);
+            Uri uri = getContentResolver().insert(LivroContract.PetEntry.CONTENT_URI, values);
             if (uri == null) {
                 Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show();
             } else {
@@ -219,13 +219,13 @@ public class InserirActivity extends AppCompatActivity  implements LoaderManager
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projection = {
-                PetContract.PetEntry._ID,
-                PetContract.PetEntry.COLUNA_TITULO,
-                PetContract.PetEntry.COLUNA_AUTOR,
-                PetContract.PetEntry.COLUNA_PRECO,
-                PetContract.PetEntry.COLUNA_QUANTIDADE,
-                PetContract.PetEntry.COLUNA_NOME_FORNECEDOR,
-                PetContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR};
+                LivroContract.PetEntry._ID,
+                LivroContract.PetEntry.COLUNA_TITULO,
+                LivroContract.PetEntry.COLUNA_AUTOR,
+                LivroContract.PetEntry.COLUNA_PRECO,
+                LivroContract.PetEntry.COLUNA_QUANTIDADE,
+                LivroContract.PetEntry.COLUNA_NOME_FORNECEDOR,
+                LivroContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR};
 
         return new CursorLoader(this,
                 mCurrentPetUri,
@@ -238,12 +238,12 @@ public class InserirActivity extends AppCompatActivity  implements LoaderManager
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data.moveToFirst()) {
-            int tituloColumnIndex = data.getColumnIndex(PetContract.PetEntry.COLUNA_TITULO);
-            int autorColumnIndex = data.getColumnIndex(PetContract.PetEntry.COLUNA_AUTOR);
-            int precoColumnIndex = data.getColumnIndex(PetContract.PetEntry.COLUNA_PRECO);
-            int quantidadeColumnIndex = data.getColumnIndex(PetContract.PetEntry.COLUNA_QUANTIDADE);
-            int nomeFornecedorColumnIndex = data.getColumnIndex(PetContract.PetEntry.COLUNA_NOME_FORNECEDOR);
-            int telefoneFornecedorColumnIndex = data.getColumnIndex(PetContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR);
+            int tituloColumnIndex = data.getColumnIndex(LivroContract.PetEntry.COLUNA_TITULO);
+            int autorColumnIndex = data.getColumnIndex(LivroContract.PetEntry.COLUNA_AUTOR);
+            int precoColumnIndex = data.getColumnIndex(LivroContract.PetEntry.COLUNA_PRECO);
+            int quantidadeColumnIndex = data.getColumnIndex(LivroContract.PetEntry.COLUNA_QUANTIDADE);
+            int nomeFornecedorColumnIndex = data.getColumnIndex(LivroContract.PetEntry.COLUNA_NOME_FORNECEDOR);
+            int telefoneFornecedorColumnIndex = data.getColumnIndex(LivroContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR);
 
             String titulo = data.getString(tituloColumnIndex);
             String autor = data.getString(autorColumnIndex);

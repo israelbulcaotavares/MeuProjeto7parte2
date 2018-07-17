@@ -9,9 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -19,14 +17,14 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.tavares.meuprojeto7parte2.adapter.PetCursorAdapter;
-import com.tavares.meuprojeto7parte2.data.PetContract;
+import com.tavares.meuprojeto7parte2.adapter.LivroCursorAdapter;
+import com.tavares.meuprojeto7parte2.data.LivroContract;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int PET_LOADER = 0;
 
-    private PetCursorAdapter mCursorAdapter;
+    private LivroCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +47,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
       //  View emptyView = findViewById(R.id.empty_view);
         //petListView.setEmptyView(emptyView);
 
-        mCursorAdapter = new PetCursorAdapter(this, null);
+        mCursorAdapter = new LivroCursorAdapter(this, null);
         petListView.setAdapter(mCursorAdapter);
 
         petListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, InserirActivity.class);
-                Uri currentPetUri = ContentUris.withAppendedId(PetContract.PetEntry.CONTENT_URI, id);
+                Uri currentPetUri = ContentUris.withAppendedId(LivroContract.PetEntry.CONTENT_URI, id);
                 intent.setData(currentPetUri);
                 startActivity(intent);
             }
@@ -88,36 +86,36 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      */
     private void insertPet() {
         ContentValues values = new ContentValues();
-        values.put(PetContract.PetEntry.COLUNA_TITULO, "INVESTIDOR INTELIGENTE");
-        values.put(PetContract.PetEntry.COLUNA_AUTOR, "Benjamin Graham");
-        values.put(PetContract.PetEntry.COLUNA_PRECO, "R$0,00");
-        values.put(PetContract.PetEntry.COLUNA_QUANTIDADE, "130");
-        values.put(PetContract.PetEntry.COLUNA_NOME_FORNECEDOR, "130");
-        values.put(PetContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR, "75454634662");
+        values.put(LivroContract.PetEntry.COLUNA_TITULO, "INVESTIDOR INTELIGENTE");
+        values.put(LivroContract.PetEntry.COLUNA_AUTOR, "Benjamin Graham");
+        values.put(LivroContract.PetEntry.COLUNA_PRECO, "R$0,00");
+        values.put(LivroContract.PetEntry.COLUNA_QUANTIDADE, "130");
+        values.put(LivroContract.PetEntry.COLUNA_NOME_FORNECEDOR, "130");
+        values.put(LivroContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR, "75454634662");
 
-        // Uri uri = getContentResolver().insert(PetContract.PetEntry.CONTENT_URI, values);
+        // Uri uri = getContentResolver().insert(LivroContract.PetEntry.CONTENT_URI, values);
     }
 
     /* Helper method to delete all pets in the database.
      */
     private void deleteAllPets() {
-        int rowsDeleted = getContentResolver().delete(PetContract.PetEntry.CONTENT_URI, null, null);
+        int rowsDeleted = getContentResolver().delete(LivroContract.PetEntry.CONTENT_URI, null, null);
         Log.v("CatalogActivity", rowsDeleted + " rows deleted from pet database");
     }
 
     @Override
     public android.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projection = {
-                PetContract.PetEntry._ID,
-                PetContract.PetEntry.COLUNA_TITULO,
-                PetContract.PetEntry.COLUNA_AUTOR,
-                PetContract.PetEntry.COLUNA_PRECO,
-                PetContract.PetEntry.COLUNA_QUANTIDADE,
-                PetContract.PetEntry.COLUNA_NOME_FORNECEDOR,
-                PetContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR};
+                LivroContract.PetEntry._ID,
+                LivroContract.PetEntry.COLUNA_TITULO,
+                LivroContract.PetEntry.COLUNA_AUTOR,
+                LivroContract.PetEntry.COLUNA_PRECO,
+                LivroContract.PetEntry.COLUNA_QUANTIDADE,
+                LivroContract.PetEntry.COLUNA_NOME_FORNECEDOR,
+                LivroContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR};
 
         return new CursorLoader(this,
-                PetContract.PetEntry.CONTENT_URI,
+                LivroContract.PetEntry.CONTENT_URI,
                 projection,
                 null,
                 null,

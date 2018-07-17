@@ -10,11 +10,11 @@ import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import com.tavares.meuprojeto7parte2.R;
-import com.tavares.meuprojeto7parte2.data.PetContract;
+import com.tavares.meuprojeto7parte2.data.LivroContract;
 
-public class PetCursorAdapter extends CursorAdapter {
+public class LivroCursorAdapter extends CursorAdapter {
 
-    public PetCursorAdapter(Context context, Cursor c) {
+    public LivroCursorAdapter(Context context, Cursor c) {
         super(context, c, 0 /* flags */);
     }
 
@@ -32,12 +32,12 @@ public class PetCursorAdapter extends CursorAdapter {
         TextView nomeFornecedorTextView =  view.findViewById(R.id.nome_fornecedor);
         TextView telefoneFornecedorTextView =  view.findViewById(R.id.telefone_fornecedor);
 
-        int tituloColumnIndex = cursor.getColumnIndex(PetContract.PetEntry.COLUNA_TITULO);
-        int autorColumnIndex = cursor.getColumnIndex(PetContract.PetEntry.COLUNA_AUTOR);
-        int precoColumnIndex = cursor.getColumnIndex(PetContract.PetEntry.COLUNA_PRECO);
-        int quantidadeColumnIndex = cursor.getColumnIndex(PetContract.PetEntry.COLUNA_QUANTIDADE);
-        int nomeFornecedorColumnIndex = cursor.getColumnIndex(PetContract.PetEntry.COLUNA_NOME_FORNECEDOR);
-        int telefoneFornecedorColumnIndex = cursor.getColumnIndex(PetContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR);
+        int tituloColumnIndex = cursor.getColumnIndex(LivroContract.PetEntry.COLUNA_TITULO);
+        int autorColumnIndex = cursor.getColumnIndex(LivroContract.PetEntry.COLUNA_AUTOR);
+        int precoColumnIndex = cursor.getColumnIndex(LivroContract.PetEntry.COLUNA_PRECO);
+        int quantidadeColumnIndex = cursor.getColumnIndex(LivroContract.PetEntry.COLUNA_QUANTIDADE);
+        int nomeFornecedorColumnIndex = cursor.getColumnIndex(LivroContract.PetEntry.COLUNA_NOME_FORNECEDOR);
+        int telefoneFornecedorColumnIndex = cursor.getColumnIndex(LivroContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR);
 
         String tituloLivro = cursor.getString(tituloColumnIndex);
         String nomeAutor = cursor.getString(autorColumnIndex);

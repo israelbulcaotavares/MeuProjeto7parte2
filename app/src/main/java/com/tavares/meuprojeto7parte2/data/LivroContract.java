@@ -19,13 +19,13 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-public final class PetContract {
+public final class LivroContract {
 
     public static final String CONTENT_AUTHORITY = "com.tavares.meuprojeto7pate2";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    public static final String PATH_PETS = "pets";
+    public static final String PATH_PETS = "livros";
 
-    private PetContract() {
+    private LivroContract() {
     }
 
     public static final class PetEntry implements BaseColumns {
@@ -38,7 +38,7 @@ public final class PetContract {
         public static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PETS;
 
-        public final static String TABLE_NAME = "pets";
+        public final static String TABLE_NAME = "livros";
         public final static String _ID = BaseColumns._ID;
         public final static String COLUNA_TITULO = "titulo";
         public final static String COLUNA_AUTOR = "autor";

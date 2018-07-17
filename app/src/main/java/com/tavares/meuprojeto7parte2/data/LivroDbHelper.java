@@ -20,24 +20,24 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-public class PetDbHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "ryr5.db";
+public class LivroDbHelper extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "livro.db";
     private static final int DATABASE_VERSION = 1;
 
-    public PetDbHelper(Context context) {
+    public LivroDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CRIAR_LIVROS = "CREATE TABLE " + PetContract.PetEntry.TABLE_NAME + "("
-                + PetContract.PetEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + PetContract.PetEntry.COLUNA_TITULO + " TEXT NOT NULL, "
-                + PetContract.PetEntry.COLUNA_AUTOR + " TEXT, "
-                + PetContract.PetEntry.COLUNA_PRECO + " TEXT, "
-                + PetContract.PetEntry.COLUNA_QUANTIDADE + " TEXT, "
-                + PetContract.PetEntry.COLUNA_NOME_FORNECEDOR + " TEXT, "
-                + PetContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR + " TEXT) ";
+        String CRIAR_LIVROS = "CREATE TABLE " + LivroContract.PetEntry.TABLE_NAME + "("
+                + LivroContract.PetEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + LivroContract.PetEntry.COLUNA_TITULO + " TEXT NOT NULL, "
+                + LivroContract.PetEntry.COLUNA_AUTOR + " TEXT, "
+                + LivroContract.PetEntry.COLUNA_PRECO + " TEXT, "
+                + LivroContract.PetEntry.COLUNA_QUANTIDADE + " TEXT, "
+                + LivroContract.PetEntry.COLUNA_NOME_FORNECEDOR + " TEXT, "
+                + LivroContract.PetEntry.COLUNA_TELEFONE_FORNECEDOR + " TEXT) ";
 
         db.execSQL(CRIAR_LIVROS);
     }

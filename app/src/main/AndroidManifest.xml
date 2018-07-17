@@ -21,7 +21,7 @@
         </activity>
 
         <provider
-            android:name=".data.PetProvider"
+            android:name=".data.LivroProvider"
             android:authorities="com.tavares.meuprojeto7pate2"
             android:exported="false" />
 
