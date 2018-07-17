@@ -21,7 +21,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class LivroDbHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "livro.db";
+    private static final String DATABASE_NAME = "livros.db";
     private static final int DATABASE_VERSION = 1;
 
     public LivroDbHelper(Context context) {
